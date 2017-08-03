@@ -1,0 +1,331 @@
+﻿7.7
+A simple jQuery plugin for picking provinces, cities and districts of China. (中国 / 省市区 / 三级联动 / 地址选择器)
+
+Distpicker的使用
+新增地址
+地址修改
+
+
+商品总价好像是假的（回头看一下）
+从json文件中取数据替换省市区还没动
+
+
+
+已安装的atom插件：
+atom-autocomplete-php
+artisan
+autocomplete-paths
+blade-snippets
+busy-signal
+docblockr
+hyperclick
+intentions
+js-hyperclick
+language-blade
+laravel
+laravel-forms-bootstrap-snippets
+linter
+linter-php
+linter-ui-default
+php-hyperclick
+simplified-chinese-menu
+
+
+7.10
+9:30 看老欧的goodcontroller
+看了下查询作用域
+解决了下git冲突
+
+本地作用域
+本地作用域
+本地作用域允许我们定义通用的约束集合以便在应用中复用。例如，你可能经常需要获取最受欢迎的用户，要定义这样的一个作用域，只需简单在对应Eloquent模型方法前加上一个scope前缀。
+作用域总是返回查询构建器实例：
+<?php
+namespace App;
+use Illuminate\Database\Eloquent\Model;
+class User extends Model{
+    /**
+     * 只包含活跃用户的查询作用域
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopular($query)
+    {
+        return $query->where('votes', '>', 100);
+    }
+
+    /**
+     * 只包含激活用户的查询作用域
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+}
+使用本地作用域
+作用域被定义好了之后，就可以在查询模型的时候调用作用域方法，但调用时不需要加上scope前缀，你甚至可以在同时调用多个作用域，例如：
+$users = App\User::popular()->active()->orderBy('created_at')->get();
+
+$userSelect = User::active()->get()->pluck('name', 'id');
+
+普通发票（纸质）江苏康克移软软件有限公司 明细
+
+
+2017/7/12
+（1）超级管理员  订单详情  查看商品 bug  (解决)
+（2）订单状态修改完成  买家  卖家 (解决)
+0:待确认1:待发货2:待收货3:已完成
+只有当买家订单状态在待确认才可以取消操作；
+其他状态下想取消订单，请联系客服人员，在后台取消。
+ 状态：待确认，待审核，待发货，已发货，已完成，已取消
+    买家下单成功
+         =》买家（待确认）
+         =》卖家（待审核）
+    卖家审核通过
+         =》买家（待发货）
+         =》卖家（待发货）
+    卖家发货成功
+         =》买家（待收货）
+         =》卖家（已发货）
+    买家收货成功
+         =》买家（已完成）
+         =》卖家（已完成）
+（3）订单首页状态点击查询（解决）
+window.location = window.Laravel.basepath+'/orders';
+（4）报表
+
+（5）//先假设确认下单下的是全部的购物车信息（解决）
+    foreach ($orders as $key => $value) {
+            // 0:待确认1:待发货2:待收货3:已完成
+            switch ($value->status) {
+                case 0:
+                    $value->status2 = '待审核';
+                    break;
+                case 1:
+                    $value->status2 = '待发货';
+                    break;
+                case 2:
+                    $value->status2 = '待收货';
+                    break;
+                case 3:
+                    $value->status2 = '已完成';
+                    break;
+            }
+        }
+
+（6）用户商品列表价格对？？？usergoods
+
+（7）订单审核orders/orderSellers   分页是1没改 解决
+
+（8）logout bug 解决
+
+(9)购物车 全选 js 解决
+
+(10)个人设置 解决
+
+（11）确认订单地址选择 解决
+
+(12)管理员可以改订单总金额0   http://runing.dev/orders/16/detail
+
+
+2017/07/14
+vim
+
+alias ssh.web='ssh -i /d/dev/.ssh/id_rsa -p 22002 root@180.96.11.20'
+alias ssh.db='ssh -i /d/dev/.ssh/id_rsa -p 22001 root@180.96.11.20'
+
+
+老油条 2017/7/14 星期五 上午 9:12:37
+vim ~/.bashrc
+
+
+meta()->title('商品管理');
+meta()->title('商品: ' . $good->name);
+meta()->title('编辑商品: ' . $good->name);
+meta()->title('商品列表');
+
+(1)http://runing.dev/orders/18/detail bug(解决)
+(2)http://runing.dev/reports  报表管理 商品搜索不能用(解决)
+
+
+7/17：
+modal框的替换(未解决，有bug，晚上上传)
+    改了view Controllers
+
+标签栏Togglable tabs（改？）
+
+laravel5.4的事件广播 ？？？？？
+
+
+7/18
+购物车输入框（解决）
+
+全选按钮有bug（解决）
+
+编辑收货地址新加（解决）
+
+右侧页面显示（解决）
+
+
+7/19
+二级权限（解决）
+只有当买家订单状态在待确认才可以取消操作；
+其他状态下想取消订单，请联系客服人员，在后台取消。
+0:待确认1:待发货2:待收货3:已完成
+0:待卖家审核1:待发货2:待收货3:已完成4：待管理员审核
+    
+config\authorize.php 
+加策略 ：cancel_order1 cancel_order2 
+
+一些样式调整
+
+//邮件发送
+    Route::get('mail/send','MailController@send')->name('mail.send');
+发票信息？
+    个人中心，添加 发票信息 入口（解决）
+    下单的时候，可选择列表
+    除了名称，其他都选填，发票也是下单非必填项
+
+7/20
+1发票信息
+    个人中心，添加 发票信息 入口（解决）
+    下单的时候，可选择列表 （解决）
+    除了名称，其他都选填，发票也是下单非必填项 （解决）
+5:order  数据库迁移文件（解决）
+3税号验证问题（解决）
+4确认订单加验证（解决）（js验证的）
+6：卖家右侧权限视图，重新写can（解决）
+2发票编辑的时候  type选中问题（已解决）
+
+验证名字重复的问题
+
+7/24
+润林库存管理系统接口文档   到3点
+
+
+测试API
+现在让我们用curl来测试这组REST API。
+
+首先我们来测试创建：
+
+curl -i -X POST -H "Content-Type:application/json" http://runingapi.dev/api/v1/car -d '{"make":"audi","model":"tt","year":"2016"}'
+输出如下则表示创建成功：
+
+HTTP/1.0 200 OK
+Host: rest_api.dev
+Connection: close
+X-Powered-By: PHP/7.0.6
+Cache-Control: no-cache
+Content-Type: application/json
+Date: Sun, 13 Nov 2016 07:06:13 GMT
+
+{"make":"audi","model":"tt","year":"2016","id":1}
+然后我们来测试更新刚刚创建的这条记录：
+
+curl -H "Content-Type:application/json" http://runingapi.dev/api/v1/car/1 -X PUT -d '{"make":"bmw","model":"x6","year":"2016"}'
+输出如下，表示更新成功：
+
+{"id":1,"make":"bmw","model":"x6","year":"2016"}
+接下来我们来测试列表页面：
+
+curl -H "Content-Type:application/json" http://runingapi.dev/api/v1/car -X GET
+输出如下：
+
+[{"id":1,"make":"bmw","model":"x6","year":"2016"}]
+最后，我们测试下删除API：
+
+curl -X DELETE http://runingapi.dev/api/v1/car/1
+
+
+
+var params = new URLSearchParams();
+params.append('email', '446352377@qq.com');
+params.append('password', '123456');
+axios.post('http://runing.dev/api/login', params);
+
+
+2017/7/26
+c3bd7e17c4d22bd3020c8d8ae9c46668
+be335891c4f3cf1d7d8886faa0933440
+5049197a929e8d14150e040bbba18983
+
+
+2017/7/25  看了下官方包 —— API认证（Passport）
+
+2017/7/26 网页购物车确认订单测试下（未解决）
+
+2017/7/27
+$authUrl = "http://runing.dev/oauth/token";
+$requsetUrl = "http://runing.dev/api/user";
+$client_secret = "Y7gehpfB5MFtp1rThDB3VKAA7AOTrZTXOza6t2bZ";
+API_CLIENT_ID = 7
+
+$authUrl = "http://qp.91360.com:8090/oauth/token";
+$requsetUrl = "http://qp.91360.com:8090/api/user";
+$client_secret = "gejoA57e1OkmWZxPR0F4R0Ng1zZIgU0El9Cs8VCD";
+
+
+API_AUTH_URL = http://qp.91360.com:8090/oauth/token
+API_UESR_URL = http://qp.91360.com:8090/api/user
+API_CLIENT_SECRET = gejoA57e1OkmWZxPR0F4R0Ng1zZIgU0El9Cs8VCD
+
+https://runlin.91360.com/api/login
+
+
+$authUrl = "https://runlin.91360.com/oauth/token";
+$requsetUrl = "https://runlin.91360.com/api/user";
+
+
+API_AUTH_URL = https://runlin.91360.com/oauth/token
+API_UESR_URL = https://runlin.91360.com/api/user
+API_CLIENT_SECRET = gejoA57e1OkmWZxPR0F4R0Ng1zZIgU0El9Cs8VCD
+API_CLIENT_ID = 2
+chown www.www -R *
+
+
+$jsonData = json_encode($jsonData,JSON_UNESCAPED_UNICODE);
+
+
+订单列表分页（1）
+发票信息列表分页（1）
+购物车列表(1)
+我的收货地址列表(1)
+
+2
+
+$page = $request->has('page') ? $request->page : 1;
+$lslmt = $request->has('lslmt') ? $request->lslmt : 10;
+paginate( $lslmt,array('*'),'page',$page)
+
+ DELETE  oauth/tokens/{token_id}    \Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@destroy | web,auth 
+
+
+默认情况下，Passport不会从数据库删除撤销的访问令牌，随着时间的推移，在数据库中会累积大量的撤销令牌，如果你希望Passport可以自动删除撤销的令牌，可以在 AuthServiceProvider 的 boot 方法中调用 pruneRevokedTokens 方法：
+use Laravel\Passport\Passport;
+Passport::pruneRevokedTokens();
+
+
+Shoppingcart::where('identifier',$user_id."-".$good->id)->update(['content'=>serialize($content)]);
+
+
+
+$account = User::find(10)->hasOneAccount;
+$users = User::with('hasOneAccount')->take(10)->get();
+这样生成的 SQL 就是这个样子的：
+select * from account where id in (1, 2, 3, ... ...)
+
+
+
+$uid = $request->user()->id;
+
+$invoice->fill($input)->save();
+
+
+2017/7/28
+测试接口地址增加开始
+
+
+2017/7/31:
+换了域名

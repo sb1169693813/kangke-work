@@ -1,0 +1,183 @@
+﻿SVN仓库
+https://svn.comc.91360.com/ 
+GIT仓库
+https://git.comc.91360.com/home-qplib.git
+用户名是  sunb@91360.com  密码是你前面输入的 sb3126255
+
+禅道:
+https://pms.comc.91360.com
+sunb
+密码123456
+
+bug管理
+https://pms.comc.91360.com 
+用户 sunb  密码同上
+
+线上数据库
+http://pma.comc.91360.com 
+手动配置 hosts  指向  180.96.11.20
+数据库账户  dbadmin  密码 Comcsoft2015
+
+本地配置测试环境域名 (建议)
+127.0.0.1 dz.dev   (论坛)
+127.0.0.1 qp.dev   (切片库)
+127.0.0.1 img.dev   (静态资源)
+127.0.0.1 cms.dev   (资讯)
+127.0.0.1 v.dev   (视频)
+127.0.0.1 wap.dev   (手机)
+127.0.0.1 http://runing.dev/  （润林管理系统）
+
+git checkout -b dev
+git branch -u origin/dev dev
+git pull
+
+composer install
+npm install -g bower, npm install, bower install, npm run dev
+
+http://v.dev/admin/users
+admin
+Comcsoft2015
+
+https://pms.comc.91360.com/runing-invoicing.git
+https://pms.comc.91360.com/home-video.git
+
+部署到服务器上
+vim ~/.bashrc
+alias ssh.web='ssh -i /d/dev/.ssh/id_rsa -p 22002 root@180.96.11.20'
+alias ssh.db='ssh -i /d/dev/.ssh/id_rsa -p 22001 root@180.96.11.20'
+test_i.runlin.com
+
+润林线上服务器：
+http://qp.91360.com:8090
+https://runlin.91360.com
+https://runlin.91360.ai/
+
+
+测试服务器地址：
+cd /home/www/test_i.runlin.com/
+
+fieldset
+
+ php artisan passport:install
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client Secret: fyTmSRifrn16wJjLBQZTunk1LheQ3MbbSQtIYEyQ
+Password grant client created successfully.
+Client ID: 2
+Client Secret: Y7gehpfB5MFtp1rThDB3VKAA7AOTrZTXOza6t2bZ
+New client created successfully.
+Client ID: 3
+Client secret: WrRLmjXF59FVlxtJHY2ASHO5SMNa5v2xaglLQM0R
+Password grant client created successfully.
+Client ID: 4
+Client Secret: vjCJiqy7hnHI8a3JnNi5YJZZxgTjVVza76R29PMl
+
+
+php artisan make:mail DateRemind --markdown=emails.dataRemind
+
+dispatch(new DateRemind($user));
+
+wangzp@91360.com
+php artisan make:mail DateRemindSend
+
+
+event(new DateRemind($user));
+use App\Events\DateRemind;
+
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.163.com
+MAIL_PORT=465
+MAIL_USERNAME=m15555569860@163.com
+MAIL_PASSWORD=sb123456
+MAIL_ENCRYPTION=SSL
+MAIL_FROM_ADDRESS=m15555569860@163.com
+MAIL_FROM_NAME=suntest
+
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=a31679dba2045d
+MAIL_PASSWORD=b766348c840683
+MAIL_ENCRYPTION=null
+
+php artisan make:migration create_expresses_table --create=expresses
+
+ php artisan make:job SendDateRemindEmail
+
+ http://runing.dev/orders/51/confirm
+
+
+
+ $role = Auth::user()->role;
+		if($role){
+			$policies = Auth::user()->role->policies;
+
+			if ($policies['admin']) {
+				return redirect()->route('ivc.goods.index');
+			} elseif ($policies['buyer']) {
+				$goods = Good::where('expired_at' <= Carbon::now())->sortable(['id' => 'desc'])->get();
+				if(count($goods) > 0){
+					//发送注册日到期邮件提醒
+					$goodName = '';
+					foreach ($goods as $key => $value) {
+						$goodName .= $value->name.',';
+					}
+					// return $goodName;
+					event(new DateRemind(Auth::user(),$goodName));
+					return redirect()->route('ivc.goods.usergoods');
+				}
+			}
+		}
+		return view('invoice.home.index');
+
+
+		use App\Jobs\SendDateRemindEmail;
+
+
+		beanstalkd -v
+
+
+
+开始啰嗦啦：
+如果你是用的群内的离线box，记得你的homestead文件夹也要使用群文件里的那个哦，也就是说，将之前通过git clone那一步复制的github homestead文件夹删掉，用群里的替代，然后再git里面cd到homestead文件夹，执行bash init.sh,由于群里这个homestead文件夹版本是比较新的，所以执行了init以后，新产生的homestead.yaml等配置文件就直接还在这个homestead文件夹下，而不是老版本homestead那样单独放到一个隐藏文件夹了。
+
+
+
+连接到数据库
+Homestead 默认已经在虚拟机中为 MySQL 和 Postgres 数据库做好了配置，更方便的是，这些配置值就是Laravel的 .env 中默认提供的。
+想要通过本地的 Navicat 或 Sequel Pro 连接到 Homestead 上的 MySQL 或 Postgres 数据库，可以通过新建连接来实现，主机 IP 都是 127.0.0.1，对于 MySQL 而言，端口号是33060，对 Postgres 而言，端口号是54320，用户名/密码是 homestead/secret。
+
+
+
+端口转发配置
+默认情况下，Homestead 端口转发配置如下：
+SSH: 2222 → Forwards To 22
+HTTP: 8000 → Forwards To 80
+HTTPS: 44300 → Forwards To 443
+MySQL: 33060 → Forwards To 3306
+Postgres: 54320 → Forwards To 5432
+
+
+
+2017/8/3
+权限判断管理员和卖家（未解决）
+
+报表status也要改吧！(解决)
+
+状态码config
+
+线上QQ邮箱变更（未解决）
+
+
+
+{
+    "rsm": "1",
+    "errno": "",
+    "err": ""，
+    "data":{
+    	"oid":"10"
+    }
+}

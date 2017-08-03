@@ -1,0 +1,27 @@
+﻿1：
+基本操作：
+cd 目录
+git init
+git add .
+git commit -m ""
+git status
+git log
+git commit -am ""
+
+2:
+撤销操作：
+version 1.0
+git commit --amend 撤销上一次提交，并将暂存区的文件重新提交
+git checkout -- filename 拉去暂存区的文件并将替换成工作区的文件 
+git checkout -- .取消上面的全部操作
+git reset HEAD <file>拉去最新一个提交的版本库中的这个文件到暂存区，该操作不影响工作区
+
+3：
+文件删除：
+git rm --cached filename 缓存区文件被删除，工作区文件未被删除
+git rm -f filename 工作区和缓存区文件都被删除
+文件重命名：
+git mv oldfilename newfilename 重命名并存在暂存区中
+
+4：
+git分支：

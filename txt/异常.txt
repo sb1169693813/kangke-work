@@ -1,0 +1,18 @@
+$this->initGlobal();
+		$params['Action'] = $action;
+		$this->requestData = $params;
+		$this->requestData = array_merge($this->globalParams, $this->requestData);
+
+		$this->buildQuery();
+
+		// var_dump($this->requestData);exit;
+		$client = new HttpRequest();
+		try {
+			$res = $client->request(self::$method, $this->config['api'], ['query' => $this->requestData]);
+		} catch (ClientException $e) {
+			$res = $e->getResponse();
+		}
+		
+		$body = $res->getBody()->getContents();
+
+		return json_decode($body, true);

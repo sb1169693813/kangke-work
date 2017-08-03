@@ -1,0 +1,218 @@
+Include conf/extra/httpd-vhosts.conf
+
+ssh-keygen -t rsa -C "1169693813@qq.com"
+Generating public/private rsa key pair.
+
+cd ~/Homestead && vagrant up
+vagrant ssh
+vagrant halt
+
+http://homestead.app
+
+git config --global user.name "sb1169693813"
+git config --global user.email 1169693813@qq.com
+git config --global push.default simple
+
+
+git init
+git add -A
+git status
+git commit -m "20170215-1"
+git log
+
+ssh-keygen -t rsa -b 4096 -C "1169693813@qq.com"
+Generating public/private rsa key pair.
+
+
+eval `ssh-agent -s`
+ssh-add ~/.ssh/id_rsa
+
+
+git remote add origin git@github.com:sb1169693813/laravelrumen.git
+git push -u origin master
+
+
+后面我们如果对本地代码进行了改动，只需运行这 3 条命令即可将代码推送到 GitHub 上：
+1、保存到暂存区：
+git add -A
+2、输入描述信息并提交到本地的 Git：
+git commit -m "Say something"
+3、将代码推送到 GitHub：
+git push
+
+
+heroku账号:
+sb446352377@gamil.com
+
+$ heroku create
+应用名称: larasun
+应用网址：https://larasun.herokuapp.com/ | https://git.heroku.com/larasun.git
+https://samplesun.herokuapp.com/ | https://git.heroku.com/samplesun.git
+
+
+heroku rename young-citadel-70056
+
+php artisan key:generate
+
+heroku config:set APP_KEY=Jitb5w0r4Mk1iXB16t3zV7q5DJ6I65Rx
+
+
+composer create-project laravel/laravel sample --prefer-dist "5.1.*"
+
+
+为了在接下来更好的追踪项目代码的更改，我们还需要将新建的 Laravel 项目纳入到 Git 版本管理中：
+$ cd sample
+$ git init
+$ git add -A
+$ git commit -m "Initial commit"
+
+现在，我们需要在 GitHub 上新建一个名为 sample 的项目 点击创建新项目，并将代码推送上去：
+注意请把下面的 <username> 替换为你的用户名。
+$ git remote add origin git@github.com:sb1169693813/sample.git
+$ git push -u origin master
+
+
+$ git checkout master
+$ git checkout -b static-pages
+$ git checkout -b filling-layout-style
+git checkout -b modeling-users
+git checkout -b sign-up
+
+1:查看远程分支
+git branch -a
+2:查看本地分支
+git branch
+
+创建新分支：git branch branchName
+切换到新分支：git checkout sign-up
+然后 ，上面两个命令也可以合成为一个命令：
+git checkout -b branchName
+
+
+合并分支示例：
+$ git merge static-pages
+删除分支示例：
+$ git branch -d static-pages
+
+php artisan make:controller StaticPagesController --plain
+php artisan make:controller UsersController --plain
+
+
+$ git add -A
+$ git commit -m "Finish static pages"
+将 Git 切换到 master 分支，并合并 static-pages 分支上的修改：
+$ git checkout master
+$ git merge static-pages
+最后将代码推送到 GitHub 和 Heroku 上：
+$ git push
+$ git push heroku master
+
+
+一次完整的提交过程：
+$ git checkout master
+$ git checkout -b sign-up
+$ git add -A
+$ git commit -m "Finish user signup"
+$ git checkout master
+$ git merge sign-up
+将代码推送到 GitHub 和 Heroku 上。
+$ git push
+$ git push heroku master
+
+
+-g 全局安装
+windows:
+yarn install --no-bin-links
+
+
+Active Record 是一种领域模型模式，该模式由 Martin Fowler 在 2003 年出版的《企业应用架构模式》一书中进行了详细叙述并命名。其特点是一个模型类对应关系型数据库中的一个表，模型类的一个实例对应表中的一行记录。
+
+php artisan make:model Models/Article
+如果需要在创建模型的同时顺便创建数据库迁移，则可以使用 --migration 或 -m 选项
+
+php artisan tinker
+App\Models\User::create(['name'=> 'sunbin', 'email'=>'sunbin@estgroupe.com','password'=>bcrypt('password')])
+
+
+Laravel 遵从 RESTful 架构的设计原则，将数据看做一个资源，由 URI 来指定资源。对资源进行的获取、创建、修改和删除操作，分别对应 HTTP 协议提供的 GET、POST、PATCH 和 DELETE 方法。
+	（1）laravel5.4中
+         php artisan make:controller TestController --resource
+
+HTTP 请求	URL	动作	作用
+GET	/users	UsersController@index	显示所有用户列表的页面
+GET	/users/1	UsersController@show	显示用户个人信息的页面
+GET	/users/create	UsersController@create	创建用户的页面
+POST	/users	UsersController@store	创建用户
+GET	/users/{id}/edit	UsersController@edit	编辑用户个人资料的页面
+PATCH	/users/{id}	UsersController@update	更新用户
+DELETE	/users/{id}	UsersController@destroy	删除用户
+
+
+现在，我们要为用户的个人页面添加头像显示的功能。接下来的项目开发将使用 Gravatar 来为用户提供个人头像支持。Gravatar 为 “全球通用头像”，当你在 Gravatar 的服务器上放置了自己的头像后，
+可通过将自己的 Gravatar 登录邮箱进行 MD5 转码，并与 Gravatar 的 URL 进行拼接来获取到自己的 Gravatar 头像。
+
+php artisan migrate:refresh
+refresh 的作用是重置数据库并重新运行所有迁移
+
+
+我们可以使用 heroku run 在 Heroku 运行 Laravel 的指定命令。现在我们需要在 Heroku 上执行迁移，生成用户表，可通过下面命令来完成：
+$ heroku run php artisan migrate
+若提示是否要在生产环境上运行此命令，请输入 yes。
+如果你要在 Heroku 上重置 PostgreSQL 数据库，可以使用以下命令：
+$ heroku pg:reset DATABASE
+$ heroku run php artisan migrate
+
+
+接下来让我们来新建分支，开始进行登录和退出相关功能的开发。
+$ git checkout master
+$ git checkout -b login-logout
+
+$ php artisan make:controller SessionsController --plain
+
+你也可以使用 Laravel 提供的 route:list 命令来查看已添加的路由。
+$ php artisan route:list
+
+
+接下来的消息提示我们会用会话进行闪存，并分别为其设定好指定的键。danger, warning, success, info这四个键名在 Bootstrap 分别具有不同样式展现效果，因此后面我们将使用这几个键作为消息提示的专有设定。
+
+
+我们可以使用 NPM 来为应用添加 jQuery 模块。对新增的 jQuery 模块进行安装。
+$ yarn add jquery --save --no-bin-links
+
+
+在 Laravel 中，如果要让一个已认证通过的用户实例进行登录，可以使用以下方法：
+Auth::login($user);
+
+我们可以通过调用 Laravel 默认提供的 Auth::logout() 方法来实现用户的退出功能。
+
+
+2017-03-08：
+$ git checkout master
+$ git checkout -b user-crud
+
+我们可以使用以下命令来生成一个名为 UserPolicy 的授权策略类文件，用于管理用户模型的授权。
+$ php artisan make:policy UserPolicy
+
+
+2017-03-09：
+假数据的生成分为两个阶段：
+1.	对要生成假数据的模型指定字段进行赋值 - 『模型工厂』；
+2.	批量生成假数据模型 - 『数据填充』；
+
+我们可以借助 Faker 和 Eloquent 模型工厂来为指定模型的每个字段设置随机值。
+在 Laravel 中我们使用 Seeder 类来给数据库填充测试数据。所有的 Seeder 类文件都放在 database/seeds 目录下，文件名需要按照『驼峰式』来命名，且严格遵守大小写规范。
+$ php artisan make:seeder UsersTableSeeder
+
+运行生成假数据的命令之前，我们需要使用 migrate:refresh 命令来重置数据库，之后再使用 db:seed 执行数据填充。
+$ php artisan migrate:refresh
+$ php artisan db:seed --class=UsersTableSeeder
+
+我们需要生成一个迁移文件来为用户表新增管理员字段。在生成迁移文件时，带上 --table 选项可以为指定数据表生成迁移文件。现在，让我们运行下面命令来为用户表新增管理员字段。
+$ php artisan make:migration add_is_admin_to_users_table --table=users
+在迁移文件创建成功之后，我们还需要运行数据库迁移。
+$ php artisan migrate
+
+最后让我们对数据库进行重置和填充。
+$ php artisan migrate:refresh --seed
+
+

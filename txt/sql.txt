@@ -1,0 +1,16 @@
+select c.catid, c.catname, n.id, n.title, n.url, n.copyfrom from (
+	(select i.id, i.catid, i.title,i.url, d.copyfrom from v9_news as i left join v9_news_data as d on i.id = d.id where i.status=99 and i.title is not NULL)
+ UNION (select i.id, i.catid, i.title,i.url, d.copyfrom from v9_news as i left join v9_news_data as d on i.id = d.id where i.status=99 and i.title is not NULL)
+UNION (select i.id, i.catid, i.title,i.url, d.copyfrom from v9_activities as i left join v9_activities_data as d on i.id = d.id where i.status=99 and i.title is not NULL)
+UNION (select i.id, i.catid, i.title,i.url, d.copyfrom from v9_recruits as i left join v9_recruits_data as d on i.id = d.id where i.status=99 and i.title is not NULL)
+UNION (select i.id, i.catid, i.title,i.url, d.copyfrom from v9_literature as i left join v9_literature_data as d on i.id = d.id where i.status=99 and i.title is not NULL)
+UNION (select i.id, i.catid, i.title,i.url, d.copyfrom from v9_footmarks as i left join v9_footmarks_data as d on i.id = d.id where i.status=99 and i.title is not NULL)
+) as n inner join v9_category as c on c.catid = n.catid order by c.catid asc, n.id asc;
+
+
+v9_news, v9_news_data
+v9_doctors, v9_doctors_data
+v9_activities, v9_activities_data
+v9_recruits, v9_recruits_data
+v9_literature, v9_literature_data
+v9_footmarks, v9_footmarks_data

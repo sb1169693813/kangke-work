@@ -1,0 +1,199 @@
+﻿DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=forge
+DB_USERNAME=root
+DB_PASSWORD=root
+
+<html lang="{{ config('app.locale') }}">
+
+{{ Html::style(mix('css/vendor.css')) }}
+
+{{ config('app.name') }}
+
+{{ route('admin.dashboard') }}
+
+@section('title', __('views.admin.users.index.title'))
+
+__('views.admin.users.index.title')   国际化
+__('views.admin.users.show.title', ['name' => $user->name])    
+"views.admin.users.show.title": "查看 \":name\"",
+$user->avatar
+
+
+@sortablelink('email', __('views.admin.users.index.table_header_0'),['page' => $users->currentPage()])
+列(1)参数是order by, 标题(2)参数显示在锚标签和数组()中， 参数(3)是默认的查询字符串参数。
+
+
+ //Users
+    Route::get('users', 'UserController@index')->name('users');
+    Route::get('users/{user}', 'UserController@show')->name('users.show');
+    Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
+    Route::put('users/{user}', 'UserController@update')->name('users.update');
+    Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy');
+
+
+    'active' => 'sometimes|boolean',
+
+//路由和控制器的命名规则
+ Route::resource('catalogs', 'CatalogController');
+
+ hasMany($related, $foreignKey = null, $localKey = null)
+ $this->hasMany(Video::class, 'catalog_id', 'id');
+
+ Catalog::defaultOrder()->get()->toTree();
+
+ @unless($catalogs->isEmpty())
+
+ @endunless
+
+$table->unsignedInteger('user_id')->index()->comment('用户ID');
+
+  {{ Html::style(mix('css/vendor.css')) }}
+
+  {{ Html::script(mix('js/manifest.js')) }}
+
+  
+
+获取已认证的用户信息#
+可以通过 Auth facade 来访问认证的用户。
+use Illuminate\Support\Facades\Auth;
+// 获取当前已通过认证的用户...
+$user = Auth::user();
+// 获取当前已通过认证的用户id...
+$id = Auth::id();
+
+use Illuminate\Support\Facades\Validator;
+
+检查用户是否登录#
+使用 Auth facade 的 check 方法来检查用户是否登录，如果已经登录，将会返回 true：
+use Illuminate\Support\Facades\Auth;
+if (Auth::check()) {
+    // 这个用户已经登录...
+}
+
+限制路由访问
+如果使用 控制器类，可以在构造器中调用 middleware 方法，来代替在路由中直接定义：
+public function __construct()
+{
+    $this->middleware('auth');
+}
+public function __construct()
+{
+    $this->middleware('guest')->except('logout');
+}
+
+手动认证用户
+/**
+ * Handle an authentication attempt.
+ *
+ * @return Response
+ */
+public function authenticate()
+{
+    if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        // Authentication passed...
+        return redirect()->intended('dashboard');
+        //重定向器上的 intended 方法将会重定向用户回原本想要进入的页面，也可以传入一个回退 URI 至这个方法，以避免要转回的页面不可使用。
+    }
+}
+
+
+use Illuminate\Support\Facades\Validator;
+// 获取当前认证用户...
+$user = Auth::user();
+// 获取当前认证用户的ID...
+$id = Auth::id();
+
+use Illuminate\Support\Facades\Auth;
+if (Auth::check()) {
+    // The user is logged in...
+}
+
+
+//假登录  homeController
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+public function __construct()
+{
+    $user = User::findOrFail(3);
+    Auth::login($user);
+    return;
+}
+'middleware' => 'auth'
+
+$data = json_decode($cartlist,true);
+        $content = json_encode( $data[0]['content']);
+        echo "<pre>";
+        print_r($cartlist->content);
+        echo "</pre>";
+
+
+
+$good  = GoodsUser::where([
+                    ['user_id', '=', $user->id],
+                    ['goods_id', '=', $value->id],
+                ])->first();
+
+
+use Carbon\Carbon;
+echo Carbon::now();
+
+php artisan make:migration alter_orders_table --table=orders
+
+
+一旦我们已经设置好可以被批量赋值的属性，便能通过 create 方法来添加一条新记录到数据库。create 方法将返回已经被保存的模型实例：
+   $flight = App\Flight::create(['name' => 'Flight 10']);
+如果你已经有一个 model 实例，你可以使用一个数组传递给 fill 方法：
+   $flight->fill(['name' => 'Flight 22']);
+
+
+/**
+     * 商品关联特定配置
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userSettings()
+    {
+        return $this->hasMany(\App\Models\GoodsUser::class, 'goods_id', 'id');
+    }
+
+    
+    hasOne();
+    
+
+    echo "<pre>";
+    print_r($goodsUser);
+    echo "</pre>";
+
+
+    btn-back
+
+
+
+    Gloudemans\Shoppingcart\CartItem Object
+(
+    [rowId] => 5049197a929e8d14150e040bbba18983
+    [id] => 1
+    [qty] => 1
+    [name] => 商品名称1
+    [price] => 120
+    [options] => Gloudemans\Shoppingcart\CartItemOptions Object
+        (
+            [items:protected] => Array
+                (
+                    [specification] => 长宽高
+                    [unit] => 单位
+                )
+
+        )
+
+    [associatedModel:Gloudemans\Shoppingcart\CartItem:private] => App\Models\Good
+    [taxRate:Gloudemans\Shoppingcart\CartItem:private] => 0
+)
+
+
+return response()->json([
+    'code' => 0,
+    'msg' => ' 移除购物车成功'
+    ]);

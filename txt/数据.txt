@@ -1,0 +1,113 @@
+  foreach ($result as $k => $v)
+ {
+     echo "<pre>";
+     print_r($v);
+     echo "</pre>";
+ }
+Array
+(
+    [rowId] => 027c91341fd5cf4d2579b49c4b6a90da
+    [id] => 1
+    [name] => 商品名1
+    [qty] => 2
+    [price] => 230
+    [options] => Array
+        (
+        )
+
+    [tax] => 48.3
+    [subtotal] => 460
+)
+Array
+(
+    [rowId] => efb26e2c6ab6bd4d1323288923522d4e
+    [id] => 4
+    [name] => 商品名4
+    [qty] => 1
+    [price] => 232
+    [options] => Array
+        (
+        )
+
+    [tax] => 48.72
+    [subtotal] => 232
+)
+
+
+
+<?php echo ($cart->options->has('specification') ? $cart->options->specification : ''); ?>
+
+cart:
+$identifier = $user_id.','.$id;
+$instane = $user_id;
+
+ba5fbd75c742e2f9c4f1520c1f400c97
+ba5fbd75c742e2f9c4f1520c1f400c97
+9b382a8df9fe6f91d5444f8fc8cae6de
+
+
+use Gloudemans\Shoppingcart\Contracts\Buyable;
+// Now, when iterating over the content of the cart, you can access the model.
+foreach(Cart::content() as $row) {
+    echo  $row->qty.$row->model->name.$row->model->description 
+}
+
+
+    /**
+    * 设定用户地址的默认值。
+    *
+    * @param  string  $value
+    * @return void
+    */
+    public function setIsDefaultAttribute($value)
+    {
+        $this->attributes['is_default'] = $value;
+    }
+
+0:待确认1:待发货2:待收货3:已完成
+只有当买家订单状态在待确认才可以取消操作；
+其他状态下想取消订单，请联系客服人员，在后台取消。
+/**
+     * Display a listing of the resource.
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        // $goods = Order::find(7);
+        //$roles = App\User::find(1)->roles()->orderBy('name')->get();
+        // $goods = Order::find(7)->goods()->get();
+        // dd($goods);
+        //$this->authorize('manage', User::class);
+        $user_id = Auth::user()->id;
+        $status = $request->input('status');
+        // $where = [];
+        // if(isset($status))
+        // {
+        //  $where['status'] = $status;
+        // }
+        // $where['user_id'] = $user_id;
+        // $orders = Order::where($where)->orderBy('id', 'desc')->paginate(1);
+            // $orders = Order::search($request->only(['created_at','user_id']))->orderBy('id', 'desc')->paginate(1);
+        $orders = Order::statussearch($request->only(['status']))->where('user_id', $user_id)->orderBy('id', 'desc')->paginate(1);
+        foreach ($orders as $key => $value) {
+            // 0:待确认1:待发货2:待收货3:已完成
+            switch ($value->status) {
+                case 0:
+                    $value->status2 = '待确认';
+                    break;
+                case 1:
+                    $value->status2 = '待发货';
+                    break;
+                case 2:
+                    $value->status2 = '待收货';
+                    break;
+                case 3:
+                    $value->status2 = '已完成';
+                    break;
+            }
+        }
+        return view('invoice.orders.index', ['orders' => $orders, 'status' => $status]);
+    }
+
+是否在确定下单的时候填写一些数据
+btn-ordermove
