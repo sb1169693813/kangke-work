@@ -105,39 +105,11 @@ MAIL_ENCRYPTION=null
 
 php artisan make:migration create_expresses_table --create=expresses
 
- php artisan make:job SendDateRemindEmail
+php artisan make:job SendDateRemindEmail
 
- http://runing.dev/orders/51/confirm
+http://runing.dev/orders/51/confirm
 
-
-
- $role = Auth::user()->role;
-		if($role){
-			$policies = Auth::user()->role->policies;
-
-			if ($policies['admin']) {
-				return redirect()->route('ivc.goods.index');
-			} elseif ($policies['buyer']) {
-				$goods = Good::where('expired_at' <= Carbon::now())->sortable(['id' => 'desc'])->get();
-				if(count($goods) > 0){
-					//发送注册日到期邮件提醒
-					$goodName = '';
-					foreach ($goods as $key => $value) {
-						$goodName .= $value->name.',';
-					}
-					// return $goodName;
-					event(new DateRemind(Auth::user(),$goodName));
-					return redirect()->route('ivc.goods.usergoods');
-				}
-			}
-		}
-		return view('invoice.home.index');
-
-
-		use App\Jobs\SendDateRemindEmail;
-
-
-		beanstalkd -v
+beanstalkd -v
 
 
 
@@ -162,22 +134,5 @@ Postgres: 54320 → Forwards To 5432
 
 
 
-2017/8/3
-权限判断管理员和卖家（未解决）
-
-报表status也要改吧！(解决)
-
-状态码config
-
-线上QQ邮箱变更（未解决）
 
 
-
-{
-    "rsm": "1",
-    "errno": "",
-    "err": ""，
-    "data":{
-    	"oid":"10"
-    }
-}
