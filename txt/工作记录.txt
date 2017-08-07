@@ -33,8 +33,9 @@ git pull
 
 composer install
 npm install -g bower, npm install, bower install, npm run dev
+git checkout -- .
 
-http://v.dev/admin/users
+http://v.dev/login
 admin
 Comcsoft2015
 
@@ -51,10 +52,25 @@ test_i.runlin.com
 http://qp.91360.com:8090
 https://runlin.91360.com
 https://runlin.91360.ai/
+测试账号密码：
+1（超级管理员） 	超级管理员 	admin@91360.com  admin
+2（买家） 	wangzp 	wangzp@91360.com 	
+3(一级卖家) 	test主管 	446352377@qq.com
+4（二级卖家） 	test卖家 	446352388@qq.com
+密码不是123456 就是654321
+https://modao.cc/app/E8nBpKG8OyCldAWkHB7XIR3X0kkQbEf#screen=s7BE93244AE1498550617142    库存原型图
 
 
 测试服务器地址：
 cd /home/www/test_i.runlin.com/
+
+会议线上网站:
+http://meeting.91360.com/
+会议后台:
+super.91360.com
+账号:CS1
+密码：91360
+
 
 fieldset
 
@@ -112,18 +128,6 @@ http://runing.dev/orders/51/confirm
 beanstalkd -v
 
 
-
-开始啰嗦啦：
-如果你是用的群内的离线box，记得你的homestead文件夹也要使用群文件里的那个哦，也就是说，将之前通过git clone那一步复制的github homestead文件夹删掉，用群里的替代，然后再git里面cd到homestead文件夹，执行bash init.sh,由于群里这个homestead文件夹版本是比较新的，所以执行了init以后，新产生的homestead.yaml等配置文件就直接还在这个homestead文件夹下，而不是老版本homestead那样单独放到一个隐藏文件夹了。
-
-
-
-连接到数据库
-Homestead 默认已经在虚拟机中为 MySQL 和 Postgres 数据库做好了配置，更方便的是，这些配置值就是Laravel的 .env 中默认提供的。
-想要通过本地的 Navicat 或 Sequel Pro 连接到 Homestead 上的 MySQL 或 Postgres 数据库，可以通过新建连接来实现，主机 IP 都是 127.0.0.1，对于 MySQL 而言，端口号是33060，对 Postgres 而言，端口号是54320，用户名/密码是 homestead/secret。
-
-
-
 端口转发配置
 默认情况下，Homestead 端口转发配置如下：
 SSH: 2222 → Forwards To 22
@@ -133,6 +137,18 @@ MySQL: 33060 → Forwards To 3306
 Postgres: 54320 → Forwards To 5432
 
 
+ [LogicException]
+  Key path "file://D:\UPUPW_NP5.6-1511\UPUPW_NP5.6\htdocs\home-lrvboil\storage\oauth-private.key" does not exist or is not readable
+php artisan passport:install
+
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client Secret: OlZy2gnKe3Sy5CbEgKBX4dsD5m8bEaZuNzyxGZX6
+Password grant client created successfully.
+Client ID: 2
+Client Secret: M8GlyYpboLslXOgCvMV62Xyuw5BjZpnfSoOMzMh1
 
 
 
+<div class="form-group{{ $errors->has('email') ? ' has-error has-danger' : '' }}">

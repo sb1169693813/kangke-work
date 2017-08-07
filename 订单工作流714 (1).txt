@@ -1,0 +1,51 @@
+买家 待确认 1 (操作：确认订单，删除订单，状态：等待买家确认) == 卖家 无状态 0                                          买家点确认
+买家 待发货 2 (操作：取消订单，状态：等待卖家发货)  == 卖家 待确认 3
+买家 待发货 2 (操作：取消订单，状态：等待卖家发货)  == 卖家 待发货 7
+买家 待收货 9 (操作：确认收货，状态：卖家已发货)  == 卖家 已发货 8
+买家 已完成 10 (操作：删除订单，状态：交易完成)  == 卖家 已完成 11
+
+买家  (操作：删除订单，状态：买家取消订单)  买家主动取消订单 12 == 卖家 买家主动取消订单 12
+买家  (操作：删除订单，状态：卖家取消订单)  卖家主动取消订单 13 == 卖家 卖家主动取消订单 13
+
+买家 待发货 2 (操作：取消订单，状态：等待卖家发货) == 卖家 申请主管确认订单 4
+买家 待发货 2 (操作：取消订单，状态：等待卖家发货) == 卖家 主管同意确认订单 5
+买家 待发货 2 (操作：取消订单，状态：等待卖家发货) == 卖家 主管不同意确认订单 6
+
+== 卖家 申请主管取消订单 14
+== 卖家 主管同意取消订单 15
+== 卖家 主管不同意取消订单 16
+
+
+php artisan make:migration add_sellerstatus_to_orders_table --table=orders
+
+
+//买家确认收货
+	$('body').on('click', '.btn-confirmedOrder', function(){
+        var $this = $(this),
+            url = $this.data('url');
+        axios.post(url).then(function(resp){
+            notify.Success(resp.data.msg, '', true);
+            window.location.reload();
+        }).catch(function(err) {
+            if(err.response){
+                if(err.response.status == 422){
+                    var data = err.response.data;
+                    notify.Error(data.content ? data.content : '减少', '失败');
+                }
+            }
+        });
+    });
+
+
+
+    /**
+	 * 买家确认收货
+	*/
+	public function confirmedOrder(Order $order)
+	{
+		$order->update(['status' => 3]);
+		return response()->json([
+			'code' => 0,
+			'msg' => '订单买家已确认收货',
+		]);
+	}
