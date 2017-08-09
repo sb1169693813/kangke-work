@@ -1,0 +1,13 @@
+DocBlockr
+Emmet
+Git
+ConvertToUTF8
+GitGutter
+Laravel 5 Snippets
+Laravel Blade Highlighter
+Laravel Forms Bootstrap Snippets
+Sass
+SublimeLinter
+SublimeLinter-csslint  jshint php sass
+Vue Syntax
+Xdebug

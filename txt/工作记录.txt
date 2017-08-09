@@ -1,4 +1,6 @@
-﻿SVN仓库
+﻿南京市雨花台区南海科技园A3栋（软件大道180号）305室
+
+SVN仓库
 https://svn.comc.91360.com/ 
 GIT仓库
 https://git.comc.91360.com/home-qplib.git
@@ -137,18 +139,9 @@ MySQL: 33060 → Forwards To 3306
 Postgres: 54320 → Forwards To 5432
 
 
- [LogicException]
-  Key path "file://D:\UPUPW_NP5.6-1511\UPUPW_NP5.6\htdocs\home-lrvboil\storage\oauth-private.key" does not exist or is not readable
-php artisan passport:install
+"views.admin.users.show.title": "查看 \":name\"",
+{{ Html::style(mix('css/plugin.css')) }}
+{{ Html::script(mix('js/vendor.js')) }}
 
-Encryption keys generated successfully.
-Personal access client created successfully.
-Client ID: 1
-Client Secret: OlZy2gnKe3Sy5CbEgKBX4dsD5m8bEaZuNzyxGZX6
-Password grant client created successfully.
-Client ID: 2
-Client Secret: M8GlyYpboLslXOgCvMV62Xyuw5BjZpnfSoOMzMh1
+storage:link         Create a symbolic link from "public/storage" to "storage/app/public"
 
-
-
-<div class="form-group{{ $errors->has('email') ? ' has-error has-danger' : '' }}">
