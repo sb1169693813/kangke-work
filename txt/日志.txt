@@ -346,3 +346,5 @@ $messages = [
 
 2017/8/10
 面包屑导航弄一下
+php artisan make:controller Admin/MeetingController --resource
+会议首页列表
