@@ -26,3 +26,5 @@ bower install
 npm run dev
 
 
+git config --global user.name "sb1169693813"
+git config --global user.email 1169693813@qq.com

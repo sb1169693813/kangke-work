@@ -351,3 +351,18 @@ php artisan make:controller Admin/MeetingController --resource
 
 2017/8/14
 文件上传
+
+2017/8/22
+1：短信发送，阿里大于添加短信模板
+2：短信发送代码开发
+3：会议抽奖系统数据库设计
+
+"result": {#639
+    +"err_code": "0"
+    +"model": "794023703388439670^0"
+    +"msg": "*"
+    +"success": true
+
+
+2017/8/23
+1：会议抽奖系统页面导入框架

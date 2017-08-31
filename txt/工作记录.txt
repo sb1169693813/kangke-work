@@ -77,6 +77,9 @@ super.91360.com
 账号:二三三九
 密码：123456
 
+视频测试地址：
+http://qp.91360.com:88
+
 
 fieldset
 
@@ -152,5 +155,4 @@ php artisan storage:link
 echo asset('storage/file.txt');
 
 
-INSERT INTO `cc_lectures` (`room_id`, `name`, `mavin_id`, `slug`, `author`, `keywords`, `description`, `intro`, `content`, `thumb`, `start_at`, `visit_counts`, `comment_counts`, `active`, `sort`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES ( '0', '甲状腺', '1', 'jzx', '范钦和', NULL, NULL, '324125235', '5321512213', 'uploads/rqzMvMzZ0y6WZQ2XzIBKIe1V5wTF64IzxJHxPtnc.png', '2017-05-31 18:00:00', '21', '0', '1', '0', '1', '2017-05-31 10:50:33', '2017-08-01 10:21:57', '2017-08-01 10:21:57')
-
+{{ asset('storage/'.$mavin->thumb) }}
