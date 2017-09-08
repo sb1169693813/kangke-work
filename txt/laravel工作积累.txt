@@ -197,3 +197,22 @@ return response()->json([
     'code' => 0,
     'msg' => ' 移除购物车成功'
     ]);
+
+
+
+2.3 子域名
+子域名可以通过domain关键字来设置：
+Route::group(['domain'=>'{service}.laravel.app'],function(){
+    Route::get('/write/laravelacademy',function($service){
+        return "Write FROM {$service}.laravel.app";
+    });
+    Route::get('/update/laravelacademy',function($service){
+        return "Update FROM {$service}.laravel.app";
+    });
+});
+这样我们在浏览器中访问http://write.laravel.app:8000/write/laravelacademy，则输出
+Write FROM write.laravel.app
+访问http://update.laravel.app:8000/write/laravelacademy时，则输出：
+Write FROM update.laravel.app
+注意：要想让子域名解析生效，需要在hosts中绑定IP地址
+
