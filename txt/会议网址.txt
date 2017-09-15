@@ -1,0 +1,34 @@
+服务器	远程		
+14.29.118.234 
+
+	jinyu	km@123456	
+	administrator	Yg1zVrGv	
+			
+数据库	IP:192.168.1.196 
+
+		
+	用户名	端口（非默认）	密码
+	dpweb	8635	uCgXi#7jO
+	root	8635	Ct@123456
+	会诊平台正式数据库：	comcmedicalplatform	
+	会诊平台测试数据库：	comcmedicalplatformtest
+
+
+
+金域后台：
+http://14.29.118.234:8052/admin
+
+
+http://news.epath.kingmed.com.cn/portal.php
+
+http://v.epath.kingmed.com.cn/
+
+http://meeting.epath.kingmed.com.cn/
+
+http://qp.epath.kingmed.com.cn/
+
+
+
+Route::get('getapitest', 'MeetingController@getapitest')->name('meeting.getapitest');
+
+route("m.meeting.meetinglistbyname")
