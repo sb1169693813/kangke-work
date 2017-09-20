@@ -1,0 +1,6 @@
+god.jsÌí¼Ó£º
+require('./meetingsignin/plugins/pager');
+require('./meetingsignin/plugins/popbox');
+require('./meetingsignin/views/index');
+require('./meetingsignin/views/list');
+

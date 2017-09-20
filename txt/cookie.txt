@@ -1,0 +1,9 @@
+Cookie::queue('meetingSigninInfo', $meetingSigninInfo, 4320);//先假设有效期为3天
+
+$meetingSigninInfo = Cookie::get('meetingSigninInfo');
+
+{{ env('IMG_PRIFIX') }}meeting/img/start_title_03.png
+
+
+$meetingSigninInfo =  $request->cookie('meetingSigninInfo');
+

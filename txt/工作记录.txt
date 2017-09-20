@@ -29,6 +29,7 @@ http://pma.comc.91360.com
 127.0.0.1 v.dev   (视频)
 127.0.0.1 wap.dev   (手机)
 127.0.0.1 http://runing.dev/  （润林管理系统）
+127.0.0.1 jydz.dev   (论坛)
 
 git checkout -b dev
 git branch -u origin/dev dev
@@ -80,10 +81,15 @@ super.91360.com
 视频测试地址：
 http://qp.91360.com:88
 
+机房数据库：
+192.168.0.244或server-104
+root
+1234
+
 
 fieldset
 
- php artisan passport:install
+php artisan passport:install
 Encryption keys generated successfully.
 Personal access client created successfully.
 Client ID: 1
@@ -156,3 +162,29 @@ echo asset('storage/file.txt');
 
 
 {{ asset('storage/'.$mavin->thumb) }}
+
+
+git clone https://git.comc.91360.com/home-bbs.git
+
+
+
+帖子URL：forum.php?mod=viewthread&tid=68331
+
+版块URL：forum.php?mod=forumdisplay&fid=97
+
+
+<div class="comiis_hotlist cl">
+			<!--[diy=comiis_meizhou05]-->
+			<div id="comiis_meizhou05" class="area">
+				<div id="framepPTCqh" class="cl_frame_bm frame move-span cl frame-1">
+					<div id="framepPTCqh_left" class="column frame-1-c">
+						<div id="framepPTCqh_left_temp" class="move-span temp"></div>
+						<div id="framecVQb5h" class="frame move-span cl frame-1">
+							<div id="framecVQb5h_left" class="column frame-1-c">
+								<div id="framecVQb5h_left_temp" class="move-span temp"></div><!--{block/321}-->
+							</div>
+						</div><!--{block/242}--><!--{block/243}-->
+					</div>
+				</div>
+			</div><!--[/diy]-->
+		</div>

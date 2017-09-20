@@ -1,0 +1,14 @@
+﻿HTML5的分块上传技术
+
+Copied File [\vendor\peinhu\aetherupload-laravel\config\aetherupload.php] To [\config\aetherupload.php]
+Copied File [\vendor\peinhu\aetherupload-laravel\assets\aetherupload.js] To [\public\js\aetherupload.js]
+Copied File [\vendor\peinhu\aetherupload-laravel\assets\spark-md5.min.js] To [\public\js\spark-md5.min.js]
+Copied Directory [\vendor\peinhu\aetherupload-laravel\uploads\aetherupload_file] To [\storage\app\aetherupload\file]
+Copied Directory [\vendor\peinhu\aetherupload-laravel\uploads\aetherupload_head] To [\storage\app\aetherupload\_head]
+Publishing complete.
+
+
+uploads\201709\c5dc9ce0fd8efa59adf8a21e88c9f649.txt
+uploads\201709\679c7c05cc827623e4950b5897fb72be.txt
+
+uploads\201709\679c7c05cc827623e4950b5897fb72be.txt

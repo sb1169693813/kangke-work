@@ -1,0 +1,33 @@
+server {
+        listen       80;
+        server_name  v.dev alias ;
+        location / {
+            root   D:/UPUPW_NP5.6-1511/UPUPW_NP5.6/htdocs/home-lrvboil/public;
+            index  index.html index.php;
+            try_files $uri $uri/ /index.php?$query_string;
+            #include        htdocs/home-lrvboil/up-*.conf;
+        }
+        autoindex off;
+        include advanced_settings.conf;
+        #include expires.conf;
+        location ~* .*\/(attachment|attachments|uploadfiles|avatar)\/.*\.(php|php5|phps|asp|aspx|jsp)$ {
+        deny all;
+        }
+        location ~ ^.+\.php {
+            root           D:/UPUPW_NP5.6-1511/UPUPW_NP5.6/htdocs/home-lrvboil/public;
+            fastcgi_pass   bakend;
+            fastcgi_index  index.php;
+            fastcgi_split_path_info ^((?U).+\.php)(/?.+)$;
+            fastcgi_param  PATH_INFO $fastcgi_path_info;
+            fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_path_info;
+            include        fastcgi.conf;
+        }
+        }
+#server v.dev end}
+
+git clone https://git.comc.91360.com/home-lrvboil.git
+
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+php artisan migrate
+

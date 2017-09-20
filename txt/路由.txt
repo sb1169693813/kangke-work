@@ -1,0 +1,12 @@
+|        | GET|HEAD                               | home                                                |                                    | App\Http\Controllers\HomeController@index                                  | web                 |
+| v.dev  | POST                                   | lecture/comment/{lecture}                           | v.lecture.comment                  | App\Http\Controllers\Video\LectureController@comment                       | web,auth            |
+| v.dev  | POST|GET|HEAD                          | lecture/comments/{lecture}                          | v.lecture.comments                 | App\Http\Controllers\Video\LectureController@comments                      | web                 |
+| v.dev  | GET|HEAD                               | lecture/{lecture}                                   | v.lecture.show                     | App\Http\Controllers\Video\LectureController@show                          | web                 |
+| v.dev  | GET|POST|HEAD                          | lecture/{lecture}/status                            | v.lecture.status                   | App\Http\Controllers\Video\LectureController@checkStatus                   | web                 |
+| v.dev  | GET|HEAD                               | lectures                                            | v.lecture.index                    | App\Http\Controllers\Video\LectureController@index                         | web     
+
+
+
+
+| v.dev  | GET|HEAD                               | /                                                   | v.                                 | App\Http\Controllers\Video\HomeController@index                            | web               
+
