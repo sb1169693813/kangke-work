@@ -32,3 +32,12 @@ http://qp.epath.kingmed.com.cn/
 Route::get('getapitest', 'MeetingController@getapitest')->name('meeting.getapitest');
 
 route("m.meeting.meetinglistbyname")
+
+
+后台地址：
+门户+论坛  news.epath.kingmed.com.cn/admin.php 
+视频+会议  http://v.epath.kingmed.com.cn/admin 
+切片 qp.epath.kingmed.com.cn/manage 
+账户 admin
+密码 admin123456
+
