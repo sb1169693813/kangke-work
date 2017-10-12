@@ -49,14 +49,3 @@ User ID=comcsoft;Password=comcsoft123456;Data Source=comcmedical.mysql.rds.aliyu
 ;Initial Catalog=comcwebsite;
 
  
-
-
-
- 
-title
-
-
-keywords
-
-
-description

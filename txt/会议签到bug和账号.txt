@@ -1,0 +1,41 @@
+﻿会议签到：
+2、后台缺少个签到列表，能查看所有签到人员的信息         （1）
+4、后台，签到二维码应该能显示大图，并且可以下载		（1）（没有显示大图）
+3、后台，能查看某个签到人员签到了哪些会议		（1）
+5、签到时，输入手机号码，获取验证码的时候，根据手机号码，数据库已有的姓名等资料会显示出来（
+1）
+1、需要实现不同管理员创建和管理不同会议的功能，91360的总管理员管理所有会议和账号（1）
+
+
+
+php artisan make:migration create_policys_table --create=policys
+php artisan make:controller Admin/PolicyController --resource
+php artisan make:model Models/Policy
+php artisan make:seeder PolicyTableSeeder
+php artisan db:seed --class=PolicyTableSeeder
+
+
+php artisan make:policy Backend/PolicyPolicy
+
+15555569860账号：BLZJ_9aee84 念念
+修改账号名：http://bbs.91360.com/space-uid-1.html
+http://bbs.91360.com/home.php?mod=spacecp
+
+commit:meeting signin authority system modify
+
+//wap_main.min.css
+display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;
+.welcome-topic .p1
+.welcome-topic {
+    margin: 3rem .6rem 0;
+}
+
+远程服务器更新一下jinyu分支
+
+请选择大小是110x40的图片文件（支持GIF,JPG,PNG,JPEG格式)
+
+
+<script src="{{ asset('js/go_top.js') }}"></script>
+
+
+http://img.91360.com:88/meetings/331   会议地点
